@@ -1,0 +1,80 @@
+<markers>
+<group name="landscape" header="UCF Landscape and Natural Resources Managed Areas">
+<marker name="Skunk vine (cypress strand)" lat="28.603033" lng="-81.199576" type="landscape" info_page="skunk_vine_map_info" info="" />
+<marker name="Nature Trails" lat="28.602455" lng="-81.193986" type="landscape" info_page="wild_flower_map_info" info="" />
+<marker name="Africa Landscape" lat="28.598254" lng="-81.199881" type="landscape" info_page="africa_landscape_map_info" info="" />
+<marker name="Mediterranean Landscape" lat="28.597897" lng="-81.199584" type="landscape" info_page="mediterranean_map_info" info="" />
+<marker name="Reflections Landscape" lat="28.599262" lng="-81.201346" type="landscape" info_page="reflections_map_info" info="" />
+<marker name="Community Garden" lat="28.60099" lng="-81.195701" type="landscape" info_page="community_garden_map_info" info="" />
+<!-- <marker name="Xeric Landscape" lat="28.600505" lng="-81.200395" type="landscape" info_page="xeric_map_info" info="" /> -->
+<marker name="Nature Pavillion" lat="28.602255" lng="-81.193986" type="landscape" info_page="nature_pavillion_map_info" info="" />
+<marker name="Cypress Dome" lat="28.602772" lng="-81.200027" type="landscape" info_page="cypress_dome_map_info" info="" />
+<marker name="Sago Palms" lat="28.599849" lng="-81.202883" type="landscape" info_page="sago_palms_landscape_map_info" info="" />
+<marker name="UCF Arboretum" lat="28.600645" lng="-81.196867" type="landscape" info_page="arboretum_landscape_map_info" info="" />
+<marker name="Bonsai House" lat="28.600445" lng="-81.196867" type="landscape" info_page="bonsai_house_landscape_map_info" info="" />
+</group>
+<group name="energy" header="Energy">
+<marker name="Solar PV" abbr="" lat="28.601339" lng="-81.198165" type="energy" info_page="solar-pv_map_info" info=""/>
+<marker name="Harris Corps" abbr="" lat="28.600489" lng="-81.197795" type="energy" info_page="harris-corps_map_info" info=""/>
+<marker name="Solar Charge Station" abbr="" lat="28.604294" lng="-81.19851" type="energy" info_page="solar-charge_map_info" info=""/>
+<marker name="Green Roof" abbr="" lat="28.601907" lng="-81.200705" type="energy" info_page="green-roof_map_info" info=""/>
+<marker name="Solar Hot Water" abbr="" lat="28.609868" lng="-81.197495" type="energy" info_page="solar-thermal_map_info" info=""/>
+<marker name="Thermal Energy Storage" abbr="" lat="28.604859" lng="-81.202087" type="energy" info_page="thermal-energy-storage_map_info" info=""/>
+<marker name="Physical Sciences" abbr="" lat="28.600096" lng="-81.1977832" type="energy" info_page="physical-science_map_info" info=""/>
+</group>
+<group name="transportation" header="Transportation">
+<route name="Black Route" id="black" color="#000000">
+<marker name="Burnett Honors College" lat="28.602326" lng="-81.202644" type="transportation" info="" />
+<marker name="Lake Claire Apartments" lat="28.604436" lng="-81.20486" type="transportation" info="" />
+<marker name="Arena/Tower" lat="28.606226" lng="-81.197923" type="transportation" info="" />
+<marker name="COHPA/Engineering/CREOL" lat="28.602967" lng="-81.197264" type="transportation" info="" />
+<marker name="AV1/Nike Community" lat="28.59407" lng="-81.1967" type="transportation" info="" />
+<marker name="Marketplace/Student Resource Center (SRC)" lat="28.597437" lng="-81.199152" type="transportation" info="" />
+<marker name="Welcome Center/Millican Hall" lat="28.5982" lng="-81.202067" type="transportation" info="" />
+<marker name="Teaching Academy/Welcome Center" lat="28.598874" lng="-81.203838" type="transportation" info="" />
+<marker name="Transit Center/Education Bldg" lat="28.600553" lng="-81.205168" type="transportation" info="" />
+</route>
+<route name="Gold Route" id="gold" color="#D4A017">
+<marker name="Burnett Honors College" lat="28.602326" lng="-81.202644" type="transportation" info="" />
+<marker name="Lake Claire Apartments" lat="28.604436" lng="-81.20486" type="transportation" info="" />
+<marker name="Arena/Tower" lat="28.606226" lng="-81.197923" type="transportation" info="" />
+<marker name="COHPA/Engineering/CREOL" lat="28.602967" lng="-81.197264" type="transportation" info="" />
+<marker name="AV1/Nike Community" lat="28.59407" lng="-81.1967" type="transportation" info="" />
+<marker name="Marketplace/Student Resource Center (SRC)" lat="28.597437" lng="-81.199152" type="transportation" info="" />
+<marker name="Welcome Center/Millican Hall" lat="28.5982" lng="-81.202067" type="transportation" info="" />
+<marker name="Teaching Academy/Welcome Center" lat="28.598874" lng="-81.203838" type="transportation" info="" />
+</route>
+<route name="Pegasus Landing Bus Route" id="pegasus" color="#191970">
+<marker name="" lat="28.60287" lng="-81.201037 " type="transportation" info="" />
+<marker name="" lat="28.60821" lng="-81.210418  " type="transportation" info="" />
+<marker name="" lat="28.609854" lng="-81.214145  " type="transportation" info="" />
+</route>
+<!--<marker name="Visual Arts Bldg" abbr="VAB" lat="28.602602" lng="-81.202828" type="transportation" info=""/>
+<marker name="Colbourn Hall" abbr="" lat="28.60116" lng="-81.202516" type="transportation" info=""/>
+<marker name="Theatre" abbr="" lat="28.600293" lng="-81.199711" type="transportation" info=""/>
+<marker name="Physical Sciences" abbr="" lat="28.600039" lng="-81.197865" type="transportation" info=""/>
+<marker name="Health &amp; Public Affairs I" abbr="" lat="28.602808" lng="-81.198815" type="transportation" info=""/>
+<marker name="Education" abbr="" lat="28.600134" lng="-81.203815" type="transportation" info=""/>-->
+</group>
+<group name="organizations" header="Student Organizations">
+	<marker type="organizations" name="Student Sustainability Alliance" lat="28.600635" lng="-81.196776" info_page="ssa_page_map_info" path="informationorganizationsssa.html" />
+	<marker type="organizations" name="I.D.E.A.S." lat="28.592114" lng="-81.205316" info_page="ideas_page_map_info" />
+	<marker type="organizations" name="Eco - Advocates" lat="28.600755" lng="-81.202473" info_page="eco_advocates_page_map_info" />
+	<marker type="organizations" name="B.A.R.C." lat="28.600555" lng="-81.202473" info_page="barc_page_map_info" />
+	<marker type="organizations" name="UCF Green Team" lat="28.601668" lng="-81.200454" info_page="ucf_green_team_page_map_info" />
+	<!-- <marker type="organizations" name="R.A.C.O.O.N." lat="28.591881" lng="-81.198052" info_page="racoon_page_map_info" /> -->
+	<marker type="organizations" name="Sustainability and Energy Management" lat="28.591368" lng="-81.196514" info_page="sem_page_map_info" />
+	<marker type="organizations" name="Landscapes &amp; Natural Resources" lat="28.591468" lng="-81.196514" info_page="landscapes_NR_page_map_info" />
+	<!-- <marker type="organizations" name="UCF Recycles" lat="28.591681" lng="-81.198052" /> -->
+	<marker type="organizations" name="Spokes Council" lat="28.601339" lng="-81.200168" info_page="spokes_council_page_map_info" />
+	<marker type="organizations" name="Volunteer UCF" lat="28.601539" lng="-81.200100" info_page="volunteer_ucf_page_map_info" />
+	<marker type="organizations" name="SGA Environment &amp; Sustainability Specialists" lat="28.601907" lng="-81.200705" info_page="sga_environment_page_map_info" />
+	<marker type="organizations" name="UCF Dining Services" lat="28.598101" lng="-81.200007" info_page="dining_services_page_map_info" />
+</group>
+<group name="coalitions" header="Coalitions">
+</group>
+<group name="academic" header="Academic Areas">
+</group>
+<group name="regional" header="Regional Places"></group>
+<group name="smart" header="Smart Buildings"></group>
+</markers>

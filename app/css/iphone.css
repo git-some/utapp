@@ -1,0 +1,46 @@
+#landscape {
+	background-image:url('../images/buttons/landscape.png');
+}
+#energy {
+	background-image:url('../images/buttons/energy.png');
+}
+#transportation {
+	background-image:url('../images/buttons/transportation.png');
+}
+#organizations {
+	background-image:url('../images/buttons/organizations.png');
+}
+#smart {
+	background-image:url('../images/buttons/smart.png');
+}
+
+/* Footer */
+.footer{
+    background-color: #444444;
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+	height:100px;
+	background-size:100% 100%;
+   /* display: table;*/
+}
+
+.footer ul {
+	padding:0;
+	margin:0;	
+	background-image:url('../images/Bar.png');
+}
+
+.footer ul li {
+	display:table-cell;	
+	border:2px ridge black;
+	height:100px;
+	width:150px;
+	cursor:pointer;
+}
+
+.icon {
+	background-size:100% 100%;
+}
+

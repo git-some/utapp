@@ -1,0 +1,105 @@
+#landscape {
+	background-image:url('/themes/main/img/buttons/landscape.png');
+}
+#energy {
+	background-image:url('/themes/main/img/buttons/energy.png');
+}
+#transportation {
+	background-image:url('/themes/main/img/buttons/transportation.png');
+}
+#organizations {
+	background-image:url('/themes/main/img/organizations.png');
+}
+#coalitions {
+	background-image:url('/themes/main/img/buttons/coalitions.png');
+}
+#academic {
+	background-image:url('/themes/main/img/buttons/academic.png');
+}
+#regional {
+	background-image:url('/themes/main/img/buttons/regional.png');
+}
+#smart {
+	background-image:url('/themes/main/img/buttons/smart.png');
+}
+#footer {
+	background-image:url('/themes/main/img/Bar.png');
+}
+
+.info {
+	color:#000 !important;	
+}
+
+#tool-list {
+	width:632px;
+	margin-left:auto;
+	margin-right:auto;	
+}
+
+.icon {
+	background-size:100% 100%;
+}
+
+.map_container {
+	height: 100%;
+}
+
+.footer{
+	background-color: #444444 !important;
+	color: #FFFFFF !important;
+	position: absolute !important;
+	bottom: 0 !important;
+	width: 100% !important;
+	height:75px !important;
+	background-size:100% 100% !important;
+	display: table !important;
+}
+
+.footer ul {
+	padding:0 !important;
+	margin:0 !important;	
+}
+
+.footer ul li {	
+	display:table-cell !important;	
+	border:2px ridge black !important;
+	cursor:pointer !important;
+	height:50px !important;
+	width:150px !important;
+}
+
+
+/* desktop */
+#containerWrapper{
+   	height: 730px !important;
+}
+
+
+@media only screen and (device-width: 768px) {
+  /* For general iPad layouts */
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  /* For portrait layouts only */
+  #containerWrapper{
+	    height: 775px !important;
+	}
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+  /* For landscape layouts only */
+   #containerWrapper{
+	    height: 525px !important;
+	}
+	
+	/* Footer */
+	.footer{
+		height:50px !important;
+	}
+	
+	.footer ul li {
+		height:50px;
+		width:150px;
+	}
+}
+

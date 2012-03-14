@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Knight's Earth</title>
+<link rel="stylesheet" href="./css/jquery-mobile.css" />
+<link rel="stylesheet" href="./themes/main/main.css" />
+<script src="js/jquery.js"></script>
+<script>//run this script after jQuery loads, but before jQuery Mobile loads
+
+//customize jQuery Mobile to let IE7+ in (Mobile IE)
+$(document).bind("mobileinit", function(){
+$.extend( $.mobile , {
+
+//extend gradeA qualifier to include IE7+
+  gradeA: function(){
+   //IE version check by James Padolsey, modified by jdalton - from http://gist.github.com/527683
+var ie = (function() {
+var v = 3, div = document.createElement('div'), a = div.all || [];
+while (div.innerHTML = '<!--[if gt IE '+(++v)+']><br><![endif]-->', a[0]);
+return v > 4 ? v : !v;
+}());
+  
+   //must either support media queries or be IE7+
+   return $.support.mediaquery || (ie && ie >= 7);
+  }
+});
+});</script>
+<!--<script src="http://jquerymobile.com/test/js"></script>-->
+<script src="js/jquery.mobile.js"></script>
+<script src="js/main.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://code.google.com/apis/gears/gears_init.js"></script>
+<script type="text/javascript" src="js/geo.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="./map.js"></script>
+
+</head>
+
+<body style="background-color:#222222">
+<div data-role="page" data-theme="a" id="home">
+
+	<div data-role="header">
+		<h1>Knight's Earth</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+
+		<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a" data-fullscreen="true">
+        	<li data-role="list-divider"></li>            
+            <li><img src="./themes/main/img/icons/map.png" /><a href="#map_page">Map</a></li>
+        	<li><img src="./themes/main/img/icons/landscape.png" /><a href="#landscape_page">Landscape</a></li>
+            <li><img src="./themes/main/img/icons/energy.png" /><a href="#energy_page">Energy</a></li>
+            <li><img src="./themes/main/img/icons/transportation.png" /><a href="#transportation_page">Transportation</a></li>
+            <li><img src="./themes/main/img/icons/organizations.png" /><a href="#organizations_page">Organizations</a></li>
+            <li><img src="./themes/main/img/icons/info.png" /><a href="#about_page">About</a></li>
+            <li><img src="./themes/main/img/icons/help.png" /><a href="#help_page">Cool Facts</a></li>
+         </ul>
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed">
+		<h4>For more information about the unifying theme please visit <a href="http://ut.ucf.edu">http://ut.ucf.edu</a></h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<div data-role="page" data-theme="a" id="map_page">
+
+	<div data-role="header">
+		<h1>Map</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" id="containerWrapper">	
+           <div id="map" class="map_container"></div> 
+	</div><!-- /content -->
+
+	<div data-role="footer" id="footer">
+	                           
+        	<ul id="tool-list">
+                <li class="icon" id="landscape"></li>
+                <li class="icon" id="energy"></li>
+                <li class="icon" id="transportation"></li>
+                <li class="icon" id="organizations"></li>
+                <li class="icon" id="smart"></li>
+          	</ul>            
+	</div><!-- /footer -->
+    	
+</div><!-- /page -->
+
+
+<div data-role="page" data-theme="a" id="landscape_page">
+
+	<div data-role="header">
+		<h1>Landscapes</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">            
+
+        	<h3>Mission</h3>
+            <p>The Department of Landscape  &amp; Natural Resources is committed to planning, installing and maintaining a sustainable and inviting outdoor environment for the UCF campus, providing  shade, visual interest, and healthy ecosystem function in both the constructed and natural areas. LNR is responsible for the maintenance, landscape  installation and irrigation, and management of all university grounds,  excluding sports turf. Our watchword is sustainability: appropriate plants, tended with the best management practices, and proper management of greenspace  on campus.</p>            
+
+    <div data-collapsed="true" data-role="collapsible">
+        	<h3>Campus Landscapes</h3>
+            <p>Demonstration landscapes  have been added to the campus core and showcase a variety of landscapes from  around the world.  You may click on each landscape to bring up directions to it.</p>
+    
+
+		 <ul data-role="listview" data-inset="true" data-theme="a">
+         <li>
+        	<a href="#africa_landscape">Africa Landscape</a>            
+            <img src="./img/managed_areas/africa/001.jpg" />
+        </li>
+        <li>
+        	<a href="#asia_landscape">Asia</a>            
+            <img src="./img/managed_areas/asia/001.jpg" />
+        </li>
+        <li>
+        	<a href="#bonsai_house_landscape">Bonsai House</a>            
+            <img src="./img/managed_areas/bonsai/001.jpg" />
+        </li>
+        <li>
+        	<a href="#community_garden_landscape">Community Garden</a>           
+        </li>
+        <li>
+        	<a href="#cypress_dome">Cypress Dome</a>           
+        </li>
+        <li>
+        	<img src="./img/managed_areas/mediterranean/001.jpg" />
+        	<a href="#mediterranean_landscape">Mediterranean Landscape</a>            
+        </li>
+        <li>
+        	<a href="#nature_pavillion">Nature Pavillion</a>            
+        </li>
+        <li>
+        	<a href="#reflections_landscape">Reflections Landscape</a>
+        	<img src="./img/managed_areas/reflections-pond/001.jpg" />
+        </li>        
+         <li>
+        	<a href="#skunk_vine">Skunk vine</a>
+        </li>
+        <li>
+        	<a href="#wild_flower">Wild Flower Loop</a>
+        </li>
+        <li>
+        	<a href="#xeric_landscape">Xeric Landscape</a>
+            <img src="./img/managed_areas/xeric/001.jpg" />
+        </li>
+        </ul>
+        </div>
+        <div data-collapsed="true" data-role="collapsible">
+	        <h3>Educational Trail Tours</h3>
+			<p>An important addition to the mission on goals of Landscape and Natural Resources. By establishing a peer to peer  educational program based around the local native Florida ecology, LNR can further promote, sustain, and instill the important historic and present value  of our natural lands that makes up 44% of the UCF campus.</p>
+		</div>
+		        <div data-collapsed="true" data-role="collapsible">
+        	<h3>Green Roof Experimentation and Application</h3>
+            <p>In an effort to reduce energy usage and rain water runoff from a building, <u>UCF Landscape and Natural  Resources</u> has teamed up with the <u>Sustainability and Energy Management Department</u> on campus to create and maintain a native plant species green roof. The departments use high tech monitoring systems that record and evaluate  the data being collected on the roof to show that the building is actually saving money and reducing untreated rain water run-off.</p>
+        </div>
+        <div data-collapsed="true" data-role="collapsible">
+			<h3>Historic UCF Arboretum  Community Garden</h3>
+            <p><u>1.5 acre Garden</u><br>The Garden's ground-breaking took place  on February 21, 2009, and it's a collaborative effort between the UCF Arboretum  and the Student Sustainability Alliance (SSA). During its first semesters of  existence, over 600 volunteers donated over 1,500 hours of their time.<br>
+  Portions of the produce currently go to Student and Community volunteers.</p>
+        </div>
+		
+        <div data-collapsed="true" data-role="collapsible">
+        	<h3>Restoration (Alafaya Frontage Native Shrub Seeding)</h3>
+            <p>In an effort to restore a diverse plant species community, Landscape and Natural Resources performs a yearly, native grass and shrub seeding. By spreading native shrub and grass seed among the understory of a restoration site, other nonnative plant species will have a harder time at  successfully establishing on restored area, which can further promote these native plant species and eventually help increase the native plant and animal biodiversity, around the UCF community.</p>
+        </div>
+    
+	</div><!-- /content -->
+</div><!-- /page -->
+
+<div data-role="page" data-theme="a" id="africa_landscape">
+	<div data-role="header">
+		<h1 id="map_title">Map - Africa Landscape</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="africa_landscape_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding-right:10px;" src="./img/managed_areas/africa/001.jpg" width="100px"/>	
+			<p>The ecology of this African inspired garden comes from a wide variety of environments. Ranging from desert to tropics and everything in between (savannahs, jungles), the flora of this continent is incomparable.</p>
+		</div>
+    	<div id="africa_landscape_map" class="map_container"></div> 
+	</div>	
+</div>
+<div data-role="page" data-theme="a" id="asia_landscape">
+	<div data-role="header">
+		<h1 id="map_title">Map - Asia Landscape</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="asia_landscape_map_info" class="map_info" style="display:none;">
+			<p></p>
+		</div>
+    	<div id="asia_landscape_map" class="map_container"></div> 
+	</div>	
+</div>
+<div data-role="page" data-theme="a" id="bonsai_house_landscape">
+	<div data-role="header">
+		<h1 id="map_title">Map - Bonsai House</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="bonsai_house_landscape_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:15px;" src="./img/managed_areas/bonsai/001.jpg" width="100px"/>			
+			<p>Bonsai (Japanese: 盆栽, literally "potted plant") is the art of miniaturization of trees by restraining their growth to an aesthetic ideal. Cultivation includes techniques for pruning, wiring, grafting, defoliation, deadwood, leaf trimming, watering, and repotting in various styles of containers.</p>
+			<p>’Bonsai’ is a Japanese pronunciation of the earlier Chinese term penzai (盆栽). The word bonsai is used in the West as an umbrella term for all miniature trees, but traditionally should be applied only to container-grown trees following the Japanese tradition.</p>
+		</div>
+    	<div id="bonsai_house_landscape_map" class="map_container"></div> 
+	</div>	
+</div>
+<div data-role="page" data-theme="a" id="community_garden_landscape">
+	<div data-role="header">
+		<h1 id="map_title">Map - Community Garden</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="community_garden_map_info" class="map_info" style="display:none;">
+			<p>This half-acre Community Vegetable and Herb Garden started as a partnership between the Student Sustainability Alliance (SSA) and the UCF Arboretum in February of 2009. There are a variety of plants grown here, including fruits, vegetables, culinary and medicinal herbs and native Florida edibles.</p>
+			<p>The garden is run predominantly by student and community volunteers taking part in layout and design, mulching, weeding, composting, planting and sprouting seeds, and, of course, harvesting. Currently, volunteers are able to enjoy and take home portions of the harvest.</p>
+		</div>
+    	<div id="community_garden_map" class="map_container"></div> 
+	</div>	
+</div>
+<div data-role="page" data-theme="a" id="cypress_dome">
+	<div data-role="header">
+		<h1 id="map_title">Map - Cypress Dome</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="cypress_dome_map_info" class="map_info" style="display:none;">
+			<p>Forested wetlands (swamps) that are dominated by bald cypress and/or pond cypress are called cypress domes. Generally these are shallow circular depression wetlands with a vaulted canopy because smaller trees grow in the shallower waters at the outer edge. Pond cypress usually dominates these dome swamps in pine flatwoods with mucky, organic soils. Swamp gum, red maple, sweetbay (magnolia), dahoon holly, swamp bay and slash pine may also be found in the canopy.</p>
+			<p>Dome Swamps typically develop in sandy flatwoods, in areas where subsurface collapse has created a sink. Soils are composed of peat and are often underlain with acidic sands and limestone. Groundcover plants are sparse due to.</p>
+		</div>
+    	<div id="cypress_dome_map" class="map_container"></div> 
+	</div>	
+</div>
+<div data-role="page" data-theme="a" id="mediterranean_landscape">
+	<div data-role="header">
+		<h1 id="map_title">Map - Mediterranean Landscape</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="mediterranean_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:15px;" src="./img/managed_areas/mediterranean/001.jpg" width="100px"/>
+			<p>A temperate to sub-tropical biome, vegetation types range from forests to woodlands, savannas, shrublands, and grasslands.  "Mosaic" landscapes are common. Much of the woody vegetation in Mediterranean-climate regions is sclerophyll, which means ’hard-leaved’ in Greek. Sclerophyll vegetation generally has small, dark leaves covered with a waxy outer layer to retain moisture in the dry summer months of the Mediterranean.<p>
+			<p>Mediterranean eco-regions are semi-arid, and often have poor soils, so they are vulnerable to degradation by human land-use. These regions are also some of the most endangered on the planet, and many eco-regions have suffered tremendous degradation and habitat loss through logging, overgrazing, conversion to agriculture, urbanization, and introduction of exotic species. Many native plants and animals have become extinct or endangered with in these systems.</p>
+		</div>
+    	<div id="mediterranean_map" class="map_container"></div> 
+	</div>	
+</div>
+<div data-role="page" data-theme="a" id="nature_pavillion">
+	<div data-role="header">
+		<h1 id="map_title">Map - Nature Pavillion</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="nature_pavillion_map_info" class="map_info" style="display:none;">
+			<p>The newly constructed nature pavilion accents the south entrance to the 40 acre Natural Area, and provides information about recreational opportunities in the green space on campus. The pavilion was made from recycled materials and its surface edges are pervious concrete, which means storm-water drains through it, instead of resting on top of it. The Pavilion is available to rent throughout the football season for Gold Zone donors. The pavilion is open to the public, however, groups are required to rent this area. To request this space, please contact us through email or phone.</p>
+		</div>
+    	<div id="nature_pavillion_map" class="map_container"></div> 
+	</div>	
+</div>
+<div data-role="page" data-theme="a" id="reflections_landscape">
+	<div data-role="header">
+		<h1 id="map_title">Map - Reflections Landscape</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="reflections_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:15px;" src="./img/managed_areas/reflections-pond/001.jpg" width="100px"/>
+			<p>This display consists of a variety plants from all over the world. Exhibiting a post-colonial assortment of varied origins, this exhibit reflects the landscape diversity found at University of Central Florida.</p>
+		</div>
+    	<div id="reflections_map" class="map_container"></div> 
+	</div>        	
+</div>
+<div data-role="page" data-theme="a" id="skunk_vine">
+	<div data-role="header">
+		<h1 id="map_title">Map - Skunk Vine</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="skunk_vine_map_info" class="map_info" style="display:none;">
+			<p></p>
+		</div>
+    	<div id="skunk_vine_map" class="map_container"></div> 
+	</div>	
+</div>
+<div data-role="page" data-theme="a" id="wild_flower">
+	<div data-role="header">
+		<h1 id="map_title">Map - Wild Flower Loop</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="wild_flower_map_info" class="map_info" style="display:none;">
+			<p></p>
+		</div>
+    	<div id="wild_flower_map" class="map_container"></div> 
+	</div>	
+</div>
+<div data-role="page" data-theme="a" id="xeric_landscape">
+	<div data-role="header">
+		<h1 id="map_title">Map - Xeric Landscape</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="xeric_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:15px;" src="./img/managed_areas/xeric/001.jpg" width="100px"/>
+			<p>Xeric shrub-lands are a biome characterized by a dry climate, with an average winter rainfall of 10 inches or less a year. Deserts and other hyper-arid ecosystems characterize these climates. The specimen you see here consists mostly of the Neartic desert climate region of northwestern Mexico. Xeric shrublands also occur in subtropical, tropical and temperate climate regions, with soils of sandy or rocky composition and a low level of organic material. Saline or alkaline soils are most common. Plants adapted to these types of environments are called xerophytes, and include succulents, geophytes, sclerophyllous (leathery-leaved) perennial and annual plants.</p>
+		</div>
+    	<div id="xeric_map" class="map_container"></div> 
+	</div>        	
+</div>
+
+
+<div data-role="page" data-theme="a" id="energy_page">
+
+	<div data-role="header">
+		<h1>Energy</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+
+		 <ul data-role="listview" data-inset="true" data-theme="a">
+         	<li>
+        		<a href="#solar-pv">Solar PV</a>            
+            	<img src="./img/energy/solar-pv-engI_link.jpg" />
+        	</li>
+        	<li>
+        		<a href="#">Green Roof</a>            
+            	<img src="./img/energy/green-roof_link.jpg" />
+        	</li>
+        	<li>
+        		<a href="#">Harris Corps</a>            
+            	<img src="./img/energy/harris_link.jpg" />
+        	</li>
+        	<li>
+        		<a href="#">Physical Sciences</a>            
+            	<img src="./img/energy/physical-sciences_link.jpg" />
+        	</li>
+        	<li>
+        		<a href="#solar-charge">Solar Charge Station</a>            
+            	<img src="./img/energy/solar-charge-station_link.jpg" />
+        	</li>
+        	<li>
+        		<a href="#solar-thermal">Solar Hot Water</a>            
+            	<img src="./img/energy/solar-thermal_link.jpg" />
+        	</li>
+        	<li>
+        		<a href="#thermal-energy-storage">Thermal Energy Storage</a>            
+            	<img src="./img/energy/thermal-energy-storage_link.jpg" />
+        	</li>        	
+        	
+        </ul>
+
+	</div><!-- /content -->
+</div><!-- /page -->
+
+<div data-role="page" data-theme="a" id="solar-pv">
+	<div data-role="header">
+		<h1 id="map_title">Map - Solar PV</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="solar-pv_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:15px;" src="./img/energy/solar-pv-engI.jpg" width="200px"/>
+			<p style="width:500px;">In 2009, UCF installed two photovoltaic solar arrays on the Engineering buildings.  An 11 kW array is on the side of Engineering 1 and a 21 kW array on the roof of the Harris Engineering building.  The Engineering 1 array provides enough energy to power two residential homes.</p>
+		</div>
+    	<div id="solar-pv_map" class="map_container"></div> 
+	</div>        	
+</div>
+
+<div data-role="page" data-theme="a" id="solar-charge">
+	<div data-role="header">
+		<h1 id="map_title">Map - Solar Charge Station</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="solar-charge_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:10px;" src="./img/energy/solar-charge-station.jpg" width="200px"/>
+			<p style="width:500px;">Students, faculty, and staff members can charge their electric vehicles at this plug-in carport on the east side of Memory Mall.  The charging station uses solar panels to produce electrical energy.  Any unused energy generated is re-routed to UCF's power grid.</p>
+		</div>
+    	<div id="solar-charge_map" class="map_container"></div> 
+	</div>        	
+</div>
+
+<div data-role="page" data-theme="a" id="solar-thermal">
+	<div data-role="header">
+		<h1 id="map_title">Map - Solar Hot Water</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="solar-thermal_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:10px;" src="./img/energy/solar-thermal.jpg" width="200px"/>
+			<p style="width:475px;">On the roof of the Towers 2 residential hall, UCF installed a solar thermal system, which heats water with the sun's energy.  This system provides hot water for the 500 residents living in the building, reduces the need for electricity, and reduces greenhouse gas emissions.</p>
+		</div>
+    	<div id="solar-thermal_map" class="map_container"></div> 
+	</div>        	
+</div>
+
+<div data-role="page" data-theme="a" id="thermal-energy-storage">
+	<div data-role="header">
+		<h1 id="map_title">Map - Thermal Energy Storage</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="thermal-energy-storage_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:10px;" src="./img/energy/thermal-energy-storage.jpg" width="200px"/>
+			<p style="width:455px;">The TES facility allows UCF to produce chilled water during the nighttime hours, while the lower electric rate is in effect, and then store the chilled water in the tank for cooling the campus at a future time. By capitalizing on these off peak rates, the tank produces close to $700,000 in savings for the University and helps the utility company manage its peak load.</p>
+		</div>
+    	<div id="thermal-energy-storage_map" class="map_container"></div> 
+	</div>        	
+</div>
+
+<div data-role="page" data-theme="a" id="organizations_page">
+
+	<div data-role="header">
+		<h1>Organizations</h1>
+	</div>
+	<div data-role="content">
+	    <div id="student_orgs" data-collapsed="true" data-role="collapsible">	
+            <h3>Unifying Theme - Student Organizations</h3>
+            <div id="student_orgs_list">
+                <ul data-role="listview" data-theme="a">
+	                 <li>
+	                	<h3><a href="#barc_page">B.A.R.C.</a></h3>
+	                	<img src="./img/orgs/barc_link.jpg" />
+	                </li>
+	                <li>
+	                    <h3><a href="#eco_advocates_page">Eco - Advocates</a></h3>
+	                    <img src="./img/orgs/eco_link.jpg" />  
+					</li>
+					<li>
+	                    <h3><a href="#ideas_page">I.D.E.A.S.</a></h3>
+	                    <img src="./img/orgs/ideas_link.jpg" />
+					</li>
+					<li>
+	                	<h3><a href="#racoon_page">R.A.C.O.O.N.</a></h3>
+	                	<img src="./img/orgs/racoon_link.jpg" />
+	                </li>
+	                <li>
+	                	<h3><a href="#spokes_council_page">Spokes Council</a></h3>
+	                	<img src="./img/orgs/spokes_link.jpg" />  
+	                </li>
+	                <li>
+	                
+	                    <h3><a href="#ssa_page">Student Sustainability Alliance</a></h3>
+	                    <img src="./img/orgs/ssa_link.jpg" />
+	                </li>      
+	                <li>
+						<h3><a href="#sem_page">Sustainability of Energy Management</a></h3>
+						<img src="./img/orgs/sem_link.png" />
+					</li>                                
+	                <li>
+	                    <h3><a href="#ucf_green_team_page">UCF Green Team</a></h3>     
+	                    <img src="./img/orgs/green_team_link.jpg" />            
+	                </li>                  
+                </ul>
+            </div>                        
+        </div>
+        <div id="departments" data-collapsed="true" data-role="collapsible">	
+			<h3>Unifying Theme - Departments</h3>
+            <ul data-role="listview" data-theme="a">
+				<li>
+					<h3><a href="#landscapes_NR_page">Landscapes and Natural Resources</a></h3>
+				</li>
+				<li>
+					<h3><a href="#sga_environment_page">SGA Environment &amp; Sustainability Specialist</a></h3>
+				</li>			
+				<li>
+					<h3><a href="#dining_services_page">UCF Dining Services</a></h3>
+					<img src="./img/orgs/dining_link.jpg" />
+				</li>
+			</ul>				
+		</div>
+	</div>
+</div>
+<div data-role="page" data-theme="a" id="ssa_page">
+	<div data-role="header">
+		<h1 id="map_title">Map - Student Sustainability Alliance</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">	
+		<div id="ssa_page_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:10px;" src="./img/orgs/ssa.jpg" width="200px"/>
+			<p style="width:455px;">A twelve member leadership council of students who work with other environmental organizations, departments and faculty to further progress the environmental movement on campus through environmental friendly initiatives. The purpose of the SSA is to educate the student body on sustainability, including, environmental protection, economic development and social justice. Communicate with operational departments and faculty on campus about studentâ€™s needs, and participate in the development of sustainability projects on campus.</p>
+			<p style="width:455px;">Point of Contact: <a href="mailto:sustainableucf@mail.ucf.edu">sustainableucf@mail.ucf.edu </a>
+			</p>
+		</div>
+    	<div id="ssa_page_map" class="map_container"></div> 
+	</div>        	
+</div>
+
+<div data-role="page" data-theme="a" id="ideas_page">
+	<div data-role="header">
+		<h1 id="map_title">I.D.E.A.S. (Intellectual Decisions on Environmental Awareness Solutions)</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">
+		<div id="ideas_page_map_info" class="map_info" style="display:none;">	
+			<img style="float:left; padding:10px;" src="./img/orgs/ideas.jpg" width="200px"/>
+			<p>I.D.E.A.S. is a national non-profit organization started to educate, empower, and engage students in environmental sustainability on campuses by offering innovative solutions through research and development, action and environmental awareness. I.D.E.A.S. provides service learning opportunities through hands-on, action based practices which focus on environmental education, stewardship and conservation; as well as interactive strategies used to raise awareness about environmental concerns. They advocate for and perform scientific research in advanced biofuels, energy efficiencies, and renewable sources of energy as well as, link interested students with issues effecting our local environment and surrounding communities.</p>
+			<p>Point of Contact: <a href="mailto:ideasforucf@gmail.com">ideasforucf@gmail.com</a>, <a href="mailto:ideasforus@gmail.com">ideasforus@gmail.com</a></p>
+		</div>
+		<div id="ideas_page_map" class="map_container"></div> 
+	</div>
+</div>
+
+<div data-role="page" data-theme="a" id="eco_advocates_page">
+	<div data-role="header">
+		<h1 id="map_title">Map - Eco-Advocates</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">
+		<div id="eco_advocates_page_map_info" class="map_info" style="display:none;">	
+			<img style="float:left; padding:10px;" src="./img/orgs/eco.jpg" width="200px"/>
+			<p>An environmental organization at UCF that fights for environmental justice and raises awareness about local, national, and international environmental issues. Eco-Advocates promotes social equality and emphasizes the intersectionality between people and the environment.</p>
+			<p>Point of Contact: <a href="mailto:eco.advocates@gmail.com">eco.advocates@gmail.com</a></p>
+		</div>
+		<div id="eco_advocates_page_map" class="map_container"></div>
+	</div>
+</div>
+
+<div data-role="page" data-theme="a" id="ucf_green_team_page">
+	<div data-role="header">
+		<h1 id="map_title">Map - UCF Green Team</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">
+		<div id="ucf_green_team_page_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:10px;" src="./img/orgs/green_team.jpg" width="200px"/>
+			<p>Focuses on helping buildings become energy star and LEED Certified. The Green Team also raises awareness on the energy consumption of building on campus.</p>
+			<p>Point of Contact: Julie Allen; <a href="mailto:jallen@knights.ucf.edu">jallen@knights.ucf.edu</a></p>
+		</div>
+		<div id="ucf_green_team_page_map" class="map_container"></div>
+	</div>
+</div>
+
+<div data-role="page" data-theme="a" id="racoon_page">
+	<div data-role="header">
+		<h1 id="map_title">Map - R.A.C.O.O.N.</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">
+		<div id="racoon_page_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:10px;" src="./img/orgs/racoon.jpg" width="200px"/>
+			<p>Engages students and members of the community through recycling products from Off Campus Neighborhoods. R.A.C.O.O.N. also offers educational opportunities and hands on experience related to recycling.</p>
+			<p>Point of Contact: Regina Postrekhina; <a href="mailto:regina_postre@yahoo.com">regina_postre@yahoo.com</a></p>
+		</div>
+		<div id="racoon_page_map" class="map_container"></div>
+	</div>
+</div>
+
+<div data-role="page" data-theme="a" id="sem_page">
+	<div data-role="header">
+		<h1 id="map_title">Map - Sustainability and Energy Management</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">
+		<div id="sem_page_map_info" class="map_info" style="display:none;">
+			<img style="float:left; padding:10px;" src="./img/orgs/sem.png" width="200px"/>
+			<p>To obtain energy efficient operations of building systems through education, optimization, and verification while providing professional leadership and fostering sustainable growth. Current projects include, Kill-A-Watt Energy Consumption Competition for On Campus Housing, The Sustainable Speakers Series, and working towards implementing renewable technology throughout the campus.</p>
+			<p>Point of Contact: Alexandra Kennedy; <a href="al078031@pegasus.cc.ucf.edu">al078031@pegasus.cc.ucf.edu</a></p>
+		</div>
+		<div id="sem_page_map" class="map_container"></div>
+	</div>
+</div>
+
+<div data-role="page" data-theme="a" id="landscapes_NR_page">
+	<div data-role="header">
+		<h1 id="map_title">Map - Landscapes and Natural Resources</h1>
+	</div>
+	<div data-role="content" id="containerWrapper">
+		<div id="landscapes_NR_page_map_info" class="map_info" style="display:none;">
+			<p>The Department of Landscape & Natural Resources is committed to planning, installing and maintaining a sustainable and inviting outdoor environment for the UCF campus, providing shade, visual interest, and healthy ecosystem function in both the constructed and natural areas. LNR is responsible for the maintenance, landscape installation and irrigation, and management of all university grounds, excluding sports turf. Our watchword is sustainability: appropriate plants, tended with the best management practices, and proper management of greenspace on campus.</p>
+			<p>Point of Contact: Henry Harding; <a href="hank143@hotmail.com">hank143@hotmail.com</a></p>
+		</div>
+		<div id="landscapes_NR_page_map" class="map_container"></div>
+	</div>
+</div>
+
+<div data-role="page" data-theme="a" id="spokes_council_page">
+	<div data-role="header">
+		<h1>Spokes Council</h1>
+	</div>
+	<div data-role="content">
+		<p>Spokescouncil is a bike group around UCF whose main goal is to facilitate a growth of all types of bike culture in the East Orlando area, and maintain a bike cooperative free to everyone.</p>
+		<p>Point of Contact: Marcus Bagnell; <a href="http://spokes.council.org">http://spokes.council.org</a></p>
+	</div>
+</div>
+
+<div data-role="page" data-theme="a" id="barc_page">
+	<div data-role="header">
+		<h1>B.A.R.C. (Body of Animal Rights Campaigners)</h1>
+	</div>
+	<div data-role="content">
+		<p>A club at UCF that seeks to exclude all forms of exploitation to, and cruelty to animals, for food and clothing.</p>
+		<p>Point of Contact: Madelyn Sovern; <a href="mailto:maddierox25@aol.com">maddierox25@aol.com</a></p>
+	</div>
+</div>
+
+<div data-role="page" data-theme="a" id="dining_services_page">
+	<div data-role="header">
+		<h1>UCF Dining Services</h1>
+	</div>
+	<div data-role="content">
+		<p>A department at UCF that is providing sustainable solutions and alternative practices for on campus restaurants, as well as, providing students with information and items to enhance sustainable living practices.</p>
+		<p>Point of Contact: Eden Wetherell; <a href="edene.wetherell@gmail.com">edene.wetherell@gmail.com</a></p>
+	</div>
+</div>
+
+<div data-role="page" data-theme="a" id="sga_environment_page">
+	<div data-role="header">
+		<h1>SGA Environment &amp; Sustainability Specialists</h1>
+	</div>
+	<div data-role="content">
+		<p>The sustainability specialist's mission is to incorporate and improve sustainability, energy efficiencies, and student involvement standards at UCF.</p>
+		<p>Point of Contact: Michael Newman; <a href="sga_env@mail.ucf.edu">sga_env@mail.ucf.edu</a></p>
+	</div>
+</div>
+
+<div data-role="page" data-theme="a" id="about_page">
+
+	<div data-role="header">
+		<h1>About</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<p>This map app, named Knight's Earth, was inspired by the Unifying Theme of UCF focused on the environmental and global climate change:Our Planet. Our Education. Our Future. It became apparent how necessary it is to connect the everyday person with  UCF's energy conservation, sustainability, and environmental research, initiatives, and facilities on campus. This app will allow you to access most up to date and location specific information available at your fingertips by putting the information in your hands if you are walking around campus with your mobile device or allowing remote exploration through the map web site. In collaboration with UCF Departments such as Sustainability &amp; Energy Management, faculty, staff, and student organizations we were able to compile the latest statistics and photographs which enhances your UCF experience. New, exciting developments in our environmental programs and easy ways that students can make a positive impact on their environment are easily lost when the information is hard to find. However modern technology has the power to transform small hand-held smart devices and websites into interactive learning tools that can be used to guide yourself around UCF's campus and to greater environmental awareness.</p>
+		<p>We hope our research will equip you, the everyday user and visitor with relevant environmental knowledge enhanced with a visual map. Similar technology and dedicated interdisciplinary research can help us to manage and monitor our environmental impact at a large metropolitan university such as UCF. This in turn will reduce the risks associated with waste, global climate change, air and water quality, chemical health hazards that plague our environment and our daily lives. This will highlight UCF's commitment to becoming a leader in energy and environmental sustainability, thus bringing together the UCF community centered on our pledge to be climate-neutral by 2050. Go Knights!</p>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<div data-role="page" data-theme="a" id="help_page">
+
+	<div data-role="header">
+		<h1>Cool Facts</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<ul data-role="listview" data-theme="d" data-inset="true">	
+			<li>Did you know that UCF spends over $1 million a month for electricity?  So educating and encouraging students, faculty, and staff members to save energy can have a significant impact on the University's finances and will reduce its environmental impact.</li>
+		    <li>All new construction at UCF will meet or exceed the Leadership in Energy and Environmental Design (LEED) system's Silver certification.</li>
+		    <li>The University aims to get all major educational buildings ENERGY STAR certified and then Leadership in Energy & Envrironmental Design (LEED) Existing Building: Operations and Maintenance certified by 2045, at the latest.</li>  
+		    <li>UCF's goal is to reach a 75% recycling rate by 2020.</li>
+		    <li>The University of Central Florida (UCF) may be the only university in the U.S. with a quirky, solar-electric fleet vehicle in daily use that runs solely on solar energy. The department of Sustainability & Energy Management purchased an electric vehicle in 2008 and retrofitted it with solar panels.  The rooftop solar panels have successfully maintained the vehicle charge to date.  This means no fuel, no plugging in, and no emissions for close to 3,000 miles so far; a nearly carbon neutral mode of transportation for UCF!  Keep an eye out for "Sunny" as it drives by!</li>         
+		    <li>Green roofs have multiple benefits including: reducing heat loss; decreasing stormwater pollutants; lessening stormwater runoff volume; absorbing carbon dioxide; and providing habitat for wildlife.</li>
+		    <li>Since 2007, UCF has participated in Recyclemania, an inter-collegiate competition for university recycling programs.  </li>
+		    <li>UCF is committed to reducing its use of harmful chemicals and using environmentally friendly cleaning products.   </li>
+		    <li>Many departments have encouraged their faculty and staff members to reduce their paper consumption.  For example, the College of Business Administration's faculty have placed their exams online and its advising office does on-screen graduation audits.  As such, during the 2008-2009 academic year, more than 130,000 exams were taken online which saved approximately 2,700 reams of paper.</li>  
+		    <li>The first university Senior Design Symposium on renewable and sustainable energy in America was held at UCF in 2009.  Undergraduate seniors in engineering and computer science showcased design projects that involved renewable & sustainable energy.</li>
+		    <li>UCF has more than 82 acres of natural lands, 3 miles of hiking trails, and a community garden for all to enjoy.  </li>
+		</ul>
+		
+	</div><!-- /content -->
+</div><!-- /page -->
+
+<div data-role="page" data-theme="a" id="transportation_page">
+
+	<div data-role="header">
+		<h1>Transportation</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<div data-collapsed="true" data-role="collapsible">
+			<h3>On Campus Shuttles</h3>
+			<p>In order to give UCF students, faculty, and staff members a viable, alternate means by which to get around campus in a safe and convenient way, Parking & Transportation Services provides an on-campus shuttle system called The Black & Gold Line.</p>
+			<p>The Black & Gold Line operates 12 hours per day (7:00 A.M. to 7:00 P.M.) each class day during the fall and spring semesters, and on every class day during the summer terms, it runs 9 hours per day (7:00 A.M. to 4:00 P.M.).</p>
+			<div data-collapsed="true" data-role="collapsible">
+				<h3>Black Route</h3>		
+				<p>The Black Line runs clockwise to the following locations: <a href="#black_route_page">Click here to view a map of the route.</a></p>		
+	            <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a" data-fullscreen="true">
+		        	<li data-role="list-divider"></li>    		        	
+					<li><h3><a href="#">Burnett Honors College</a></h3></li>
+	                <li><h3><a href="#">Lake Claire Apartments</a></h3></li>    
+	                <li><h3><a href="#">Arena/Tower</a></h3></li>
+	                <li><h3><a href="#">COHPA/Engineering/CREOL</a></h3></li>
+	                <li><h3><a href="#">AV1/Nike Community</a></h3></li>
+	                <li><h3><a href="#">Marketplace/Student Resource Center (SRC)</a></h3></li>
+	                <li><h3><a href="#">Welcome Center/Millican Hall</a></h3></li>
+	                <li><h3><a href="#">Teaching Academy/Welcome Center</a></h3></li>
+	                <li><h3><a href="#">Transit Center/Education Bldg</a></h3></li>                       
+	            </ul>
+			</div>	
+			<div data-collapsed="true" data-role="collapsible">
+	            <h3>Gold Route</h3>
+	            <p>The Gold Line runs counterclockwise to the following locations: <a href="#gold_route_page">Click here to view a map of the route.</a></p>
+	            <ul id="gold_route_list" data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a" data-fullscreen="true">
+		        	<li data-role="list-divider"></li>		        	
+	                <li><h3><a href="#">Burnett Honors College</a></h3></li>
+	                <li><h3><a href="#">Lake Claire Apartments</a></h3></li>    
+	                <li><h3><a href="#">Arena/Tower</a></h3></li>
+	                <li><h3><a href="#">COHPA/Engineering/CREOL</a></h3></li>
+	                <li><h3><a href="#">AV1/Nike Community</a></h3></li>
+	                <li><h3><a href="#">Marketplace/Student Resource Center (SRC)</a></h3></li>
+	                <li><h3><a href="#">Welcome Center/Millican Hall</a></h3></li>
+	                <li><h3><a href="#">Teaching Academy/Welcome Center</a></h3></li>
+	            </ul>		            
+			</div>		
+       	</div>
+       	<div data-collapsed="true" data-role="collapsible">
+       		<h3>Off-Campus Shuttles</h3>
+       		<div data-collapsed="true" data-role="collapsible">
+       			<h3>Housing Shuttles</h3>
+       			<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a" data-fullscreen="true">
+       				<li><h3><a href="#">Route #1 Knights Circle</a></h3></li>
+       				<li><h3><a href="#">Route #2 College Station/Boardwalk</a></h3></li>
+       				<li><h3><a href="#">Route #3 The Edge/Arbour Apartments</a></h3></li>
+       				<li><h3><a href="#">Route #4 Alafaya Club/Campus Crossings/The Pointe at Central</a></h3></li>
+       				<li><h3><a href="#">Route #5 Village At Science Dr./Human Resources</a></h3></li>
+       				<li><h3><a href="#">Route #6 Northgate Lakes//Tivoli Apartments</a></h3></li>
+       				<li><h3><a href="#">Route #7 Collegiate Village Inn</a></h3></li>
+       				<li><h3><a href="#">Route #8 Riverwind Apartments</a></h3></li>
+       				<li><h3><a href="#">Route #9 Research Park, Orlando Tech Center (Park n Ride) , Knights Landing</a></h3></li>
+       				<li><h3><a href="#">Route #10 The Lofts and Jefferson Village</a></h3></li>
+       				<li><h3><a href="#">Route #11 Sterling University Central</a></h3></li>
+       			</ul>
+       		</div>
+       		<div data-collapsed="true" data-role="collapsible">
+       			<h3>Rosen College Shuttle</h3>
+       			<p>Shuttle services, which consist of five (5) round trips each day, are provided to the Rosen College of Hospitality Management, Monday through Thursday during the regular class day with no service on Fridays.</p>
+       			<p>The shuttle bus departs and returns on the main campus at the convergence of Pegasus Circle and Aquarius Agora Drive near the Student Union and Classroom Building I. Drop off at RCHM is at the front of the main entrance, and return trips to UCF commence from the RCHM main parking lot.</p>
+       			<h3 style="width:auto;text-align:center;">Spring and Fall semester</h3>
+       			<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<h3 style="width:auto;text-align:center;">Depart Rosen</h3>
+						<ul data-role="listview" data-theme="d" data-inset="true">
+       						<li>6:45 AM</li>
+       						<li>8:45 AM</li>
+       						<li>10:30 AM</li>
+       						<li>12:00 PM</li>
+       						<li>1:30 PM</li>
+       						<li>3:00 PM</li>
+       						<li>4:30 PM</li>
+       						<li>6:00 PM</li>
+       						<li>7:45 PM</li>
+       					</ul>						
+					</div>
+					<div class="ui-block-b">
+						<h3 style="width:auto;text-align:center;">Depart Main UCF Campus</h3>
+						<ul data-role="listview" data-theme="d" data-inset="true">
+       						<li>8:00 AM</li>
+       						<li>9:45 AM</li>
+       						<li>11:15 AM</li>
+       						<li>12:45 PM</li>
+       						<li>2:15 PM</li>
+       						<li>3:45 PM</li>
+       						<li>5:15 PM</li>
+       						<li>6:45 PM</li>
+       						<li>9:00 PM</li>
+       					</ul>
+					</div>
+				</div><!-- /grid-a -->
+				<h3 style="width:auto;text-align:center;">Summer semester</h3>
+       			<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<h3 style="width:auto;text-align:center;">Depart Rosen</h3>
+						<ul data-role="listview" data-theme="d" data-inset="true">
+       						<li>8:00 AM</li>
+       						<li>10:00 AM</li>
+       						<li>12:00 PM</li>
+       						<li>2:00 PM</li>
+       						<li>4:00 PM</li>
+       						<li>6:00 PM</li>
+       						<li>N/A</li>
+       					</ul>						
+					</div>
+					<div class="ui-block-b">
+						<h3 style="width:auto;text-align:center;">Depart Main UCF Campus</h3>
+						<ul data-role="listview" data-theme="d" data-inset="true">
+       						<li>7:00 AM</li>
+       						<li>9:00 AM</li>
+       						<li>11:00 AM</li>
+       						<li>1:00 PM</li>
+       						<li>3:00 PM</li>
+       						<li>5:00 PM</li>
+       						<li>7:00 PM</li>
+       					</ul>
+					</div>
+				</div><!-- /grid-a -->
+       			
+       			
+       		</div>
+       		<div data-collapsed="true" data-role="collapsible">
+       			<h3>Health Sciences Campus Shuttle</h3>
+       			<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a" data-fullscreen="true">
+       				<li><h3><a href="#">Temp</a></h3></li>
+       			</ul>
+       		</div>
+       	</div>
+		<div data-collapsed="true" data-role="collapsible">
+            <h3>Knight Lynx</h3>    
+            <p>In the Spring 2011 semester, SGA will be launching KnightLynx, UCF's first late night bus service. The bus will be operating from 8pm to 3am on Friday and Saturday nights and will travel throughout the UCF community. This bus service will be free for all UCF students with a valid UCF ID Card.
+KnightLynx is separated into 2 different routes that run throughout the university community.</p>
+            <div data-collapsed="true" data-role="collapsible">
+       			<h3>Green Line</h3>
+       			<p>The Green Line stays within the vicinity of campus and begins at Knights Plaza (UCF Arena) and exits the back end of campus and onto McCulloch and goes through Alafaya Trail up until Central Florida Blvd., where it makes its way back onto campus.</p>
+       			<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a" data-fullscreen="true">
+					<li><h3><a href="#">Knights Plaza (UCF Arena)</a></h3></li>
+					<li><h3><a href="#">Northgate Lakes</a></h3></li>
+					<li><h3><a href="#">Tivoli Apartments</a></h3></li>
+					<li><h3><a href="#">University Palms Shopping Center</a></h3></li>
+					<li><h3><a href="#">Pegasus Landing</a></h3></li>
+					<li><h3><a href="#">University Commons Shopping Center</a></h3></li>
+					<li><h3><a href="#">University Shoppes</a></h3></li>
+					<li><h3><a href="#">Sterling Central Apartments</a></h3></li>
+					<li><h3><a href="#">UCF Recreation & Wellness Center</a></h3></li>
+       			</ul>
+       		</div>
+       		<div data-collapsed="true" data-role="collapsible">
+       			<h3>Blue Line</h3>
+       			<p>The Blue Line extends further out into East Orlando traveling down Alafaya Trail, passing Colonial Drive and riding along Waterford Lakes Town Center and back onto campus.</p>
+       			<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a" data-fullscreen="true">
+					<li><h3><a href="#">Knights Plaza (UCF Arena)</a></h3></li>
+					<li><h3><a href="#">UCF Recreation & Wellness Center</a></h3></li>
+					<li><h3><a href="#">The Edge Apartments</a></h3></li>
+					<li><h3><a href="#">Campus Crossings (Alafaya)</a></h3></li>
+					<li><h3><a href="#">Pegasus Pointe</a></h3></li>
+					<li><h3><a href="#">Alafaya Village Shopping Center</a></h3></li>
+					<li><h3><a href="#">Waterford Lakes Town Center (Stop 1)</a></h3></li>
+					<li><h3><a href="#">Waterford Lakes Town Center (Stop 2)</a></h3></li>
+					<li><h3><a href="#">Waterford Lakes Pkwy/Woodbury Rd.</a></h3></li>
+					<li><h3><a href="#">Alafaya Commons Shopping Center (Colonial Dr. Stop)</a></h3></li>
+					<li><h3><a href="#">Alafaya Commons Shopping Center (Alafaya Trl. Stop)</a></h3></li>
+					<li><h3><a href="#">Campus Crossings (College Station)</a></h3></li>
+					<li><h3><a href="#">Boardwalk Apartments</a></h3></li>
+       			</ul>
+       		</div>        
+       	</div>   
+        <div data-collapsed="true" data-role="collapsible">
+            <h3>ZimRide</h3> 
+            <p>UCF's Zimride community is a simple way to find friends and colleagues who are going the same way you are. Zimride is a private community that makes it easy to share the seats in your car or catch a ride.</p>
+			<p>It's simple. Have a car? Split the costs by driving fellow UCF community members. Don't have a car? Sign up, post your ride and Zimride does the matching! You save money, reduce traffic, protect the environment and have more fun when you ride!</p> 
+			<p>Membership is free! All UCF staff, faculty, and students with a UCF email are eligible to sign-up for our private Zimride Rideshare Community here: <a href="http://zimride.ucf.edu/">http://zimride.ucf.edu/</a></p>           
+       	</div>        
+	</div><!-- /content -->
+</div><!-- /page -->
+
+<div data-role="page" data-theme="a" id="black_route_page">
+
+	<div data-role="header">
+		<h1 id="map_title">Map - Black Route</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" id="containerWrapper">	
+    	<div id="black_route_map" class="map_container"></div> 
+	</div><!-- /content -->
+        	
+</div><!-- /page -->
+
+<div data-role="page" data-theme="a" id="gold_route_page">
+
+	<div data-role="header">
+		<h1 id="map_title">Map - Gold Route</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" id="containerWrapper">	
+    	<div id="gold_route_map" class="map_container"></div> 
+	</div><!-- /content -->
+        	
+</div><!-- /page -->
+
+<div data-role="page" data-theme="a" id="pegasus_route_page">
+
+	<div data-role="header">
+		<h1 id="map_title">Map - Pegasus Route</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" id="containerWrapper">	
+    	<div id="pegasus_route_map" class="map_container"></div> 
+	</div><!-- /content -->
+        	
+</div><!-- /page -->
+</body>
+</html>
